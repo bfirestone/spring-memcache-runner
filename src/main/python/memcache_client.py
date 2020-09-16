@@ -41,4 +41,4 @@ if args.value:
 print("getting value for key={}".format(args.key))
 value = client.get(args.key)
 
-print("key=[{}] value=[{}]".format(args.key, args.value))
+print("key=[{}] value=[{}]".format(args.key, value))
