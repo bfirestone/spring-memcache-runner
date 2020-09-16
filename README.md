@@ -12,7 +12,7 @@
 ```shell script
 ./mvnw clean package
 ```
-1. run the jar with your options (see example below)
+1. run the jar with your options (see example below using default host/port of localhost/11211)
 ```shell script
 java -jar target/memcahe-client-0.0.1-SNAPSHOT.jar --key="MyTest" --value="Stuff2" --use.random=true
 11:43:37.055 [main] INFO com.flickr.memcaheclient.MemcaheClientApplication - starting runner
