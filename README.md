@@ -4,7 +4,7 @@
 * `--host=<memcached_host>` to set the memcache host to use (default: `localhost`)
 * `--port=<memcached_port>` to set the memcache port to use (default: `11211`)
 * `--key="<key_name>"` for the memcache key (default `HelloWorld`)
-* `--ttl="<key_expiry>"` expiry for the memcache key (default `60`)
+* `--expiry="<key_expiry>"` expiry for the memcache key (default `60`)
 * `--value="<value>"` to set the value for the memcache key
 * `--use.random=true` to include a random number in your memcache value (default `false`)
 ## HowTo Run

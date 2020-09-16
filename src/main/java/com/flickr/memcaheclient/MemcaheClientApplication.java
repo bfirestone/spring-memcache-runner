@@ -25,7 +25,7 @@ public class MemcaheClientApplication implements CommandLineRunner {
     @Value("${value:none}")
     private String memcacheValue;
 
-    @Value("${ttl:300}")
+    @Value("${expiry:300}")
     private int memcacheExpiry;
 
     @Value("${use.random:false}")
