@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  memcached:
+    image: bitnami/memcached:latest
+    command: /opt/bitnami/scripts/memcached/run.sh -l 0.0.0.0
+    ports:
+      - '11211:11211'
+
+  php-client:
+    build:
+      context: src/main/php
+    working_dir: /app
+    volumes:
+      - ./src/main/php:/app
+
+  python-client:
+    build:
+      context: src/main/python
+    working_dir: /app
+    volumes:
+      - ./src/main/python:/app
+
+  java-client:
+    build:
+      context: .
+    working_dir: /app

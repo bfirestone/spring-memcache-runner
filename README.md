@@ -36,3 +36,36 @@ java -jar target/memcahe-client-0.0.1-SNAPSHOT.jar --key="MyTest" --value="Stuff
 2020-09-16 11:43:38.995  INFO 99186 --- [           main] c.f.m.MemcaheClientApplication           : value=[Stuff2::4882]
 
 ```
+
+## Docker HowTo
+There is a `docker-compose.yaml` file in the root of the repo that consists of a memcached daemon as well as three different clients
+* java
+* python
+* php
+
+### Build The Clients
+The following command will build the three client containers
+```shell script
+docker-compose build
+```
+
+### Client Info
+In the following examples the `--host="memcached"` or similar references the memcached container name from the `docker-compose.yaml` file.
+
+#### Run Java Client
+Using the `docker-compose run` sub command we can run the various options of the client, here is an example:
+
+```shell script
+docker-compose run java-client java -jar memcahe-client-0.0.1-SNAPSHOT.jar --host="memcached" --key="MyTest"
+
+```
+
+#### Run Python Client
+```shell script
+docker-compose run python-client python memcache_client.py --host "memcached" --key "MyTest" --value "Ben123"
+```
+
+#### Run PHP Client
+ ```shell script
+docker-compose run php-client php memcache_client.php --host="memcached" --key="MyTest"
+``` 
