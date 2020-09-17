@@ -1,6 +1,7 @@
 package com.flickr.memcaheclient;
 
 import lombok.extern.slf4j.Slf4j;
+import net.rubyeye.xmemcached.XMemcachedClient;
 import net.spy.memcached.MemcachedClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -41,7 +42,9 @@ public class MemcaheClientApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        MemcachedClient memcacheClient = new MemcachedClient(new InetSocketAddress(memcacheHost, memcachePort));
+//        MemcachedClient memcacheClient = new MemcachedClient(new InetSocketAddress(memcacheHost, memcachePort));
+
+        XMemcachedClient xMemcachedClient = new XMemcachedClient(memcacheHost, memcachePort);
 
         int randNum = random.nextInt(10000);
 
@@ -52,12 +55,14 @@ public class MemcaheClientApplication implements CommandLineRunner {
             }
 
             log.info("setting value=[{}] for key=[{}] expiry=[{}]", memcacheValue, memcacheKey, memcacheExpiry);
-            memcacheClient.set(memcacheKey, memcacheExpiry, memcacheValue);
+            xMemcachedClient.set(memcacheKey, memcacheExpiry, memcacheValue);
             log.info("testing value for key=[{}]", memcacheKey);
         } else {
             log.info("pulling value for key=[{}]", memcacheKey);
         }
 
-        log.info("value=[{}]", memcacheClient.get(memcacheKey));
+        String value = xMemcachedClient.get(memcacheKey);
+
+        log.info("value=[{}]", value);
     }
 }
