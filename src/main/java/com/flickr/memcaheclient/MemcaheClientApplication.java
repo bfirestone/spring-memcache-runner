@@ -2,13 +2,11 @@ package com.flickr.memcaheclient;
 
 import lombok.extern.slf4j.Slf4j;
 import net.rubyeye.xmemcached.XMemcachedClient;
-import net.spy.memcached.MemcachedClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.net.InetSocketAddress;
 import java.util.Random;
 
 @Slf4j
@@ -42,8 +40,6 @@ public class MemcaheClientApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        MemcachedClient memcacheClient = new MemcachedClient(new InetSocketAddress(memcacheHost, memcachePort));
-
         XMemcachedClient xMemcachedClient = new XMemcachedClient(memcacheHost, memcachePort);
 
         int randNum = random.nextInt(10000);
