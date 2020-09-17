@@ -62,7 +62,7 @@ docker-compose run java-client java -jar memcahe-client-0.0.1-SNAPSHOT.jar --hos
 
 #### Run Python Client
 ```shell script
-docker-compose run python-client python memcache_client.py --host "memcached" --key "MyTest" --value "Ben123"
+docker-compose run python-client python memcache_client.py --host="memcached" --key="MyTest" --value="TestValue123"
 ```
 
 #### Run PHP Client
